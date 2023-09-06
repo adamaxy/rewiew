@@ -1,36 +1,37 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
+        // Create 4 students and 2 professors
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(1, "Alice", "Smith", "1990-05-15"));
+        students.add(new Student(2, "Bob", "Johnson", "1992-02-20"));
+        students.add(new Student(3, "Charlie", "Brown", "1993-09-10"));
+        students.add(new Student(4, "David", "Lee", "1991-07-25"));
 
-        Student student1 = new Student("000", "luca", "rossi", "02.09.1998");
-        Student student2 = new Student("001", "fabio", "verdi", "07.02.1993");
-        Student student3 = new Student("002", "adriano", "lodi", "17.04.1988");
-        Student student4 = new Student("003", "giovanni", "empoli", "08.03.1996");
-        Professore professore1 = new Professore("01", "marco", "paesan", "matematica");
-        Professore professore2 = new Professore("02", "anna", "neri", "informatica");
-        professore1.assignGrade(student1, 22);
-        professore1.assignGrade(student2, 22);
-        professore2.assignGrade(student3, 28);
-        professore2.assignGrade(student4, 22);
+        List<Professor> professors = new ArrayList<>();
+        professors.add(new Professor(101, "Professor", "Smith", "Math"));
+        professors.add(new Professor(102, "Professor", "Johnson", "Physics"));
 
-        Student[] classe = {student1, student2, student3, student4};
-        Professore[] insegnanti = {professore1, professore2};
+        // Test the assignGrade() method
+        professors.get(0).assignGrade(students.get(0), 25); // Should print a message that Alice has failed.
+        professors.get(1).assignGrade(students.get(1), 20); // Should print a message that Bob has failed.
+        professors.get(0).assignGrade(students.get(2), 30); // Should add the grade 30 to Charlie's grades list.
+        professors.get(1).assignGrade(students.get(3), 18); // Should add the grade 18 to David's grades list.
 
-        for (Student studente : classe) {
-            if (studente.isExellent()) {
-                System.out.println(studente.getName() + "\n" + studente.getSurName());
-                ;
-            }
-            for (Professore professore : insegnanti) {
-                if (studente.getCalcolaGradeAverange() >= 28) {
-                    System.out.println(studente.getName() + " " + studente.getSurName());
-
-
-                }
-
-
+        // Print the first names and last names of all excellent students
+        System.out.println("Excellent Students:");
+        for (Student student : students) {
+            if (student.isExcellent()) {
+                System.out.println(student.getFirstName() + " " + student.getLastName());
             }
         }
+
+        // Print the first name and last name of the student with the highest grade average
+        Student highestAverageStudent = students.get(0);
+        for (Student student : students) {
+            if (student.calculateGradeAverage() > highestAverageStudent.calculateGradeAverage()) {
+                highestAverageStudent = student;
+            }
+        }
+        System.out.println("Student with the highest grade average: " + highestAverageStudent.getFirstName() + " " + highestAverageStudent.getLastName());
     }
 }
