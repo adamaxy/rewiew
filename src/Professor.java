@@ -4,7 +4,7 @@ class Professor {
     private String lastName;
     private String courseTaught;
 
-    // Constructor with all attributes
+    
     public Professor(int professorID, String firstName, String lastName, String courseTaught) {
         this.professorID = professorID;
         this.firstName = firstName;
@@ -12,7 +12,7 @@ class Professor {
         this.courseTaught = courseTaught;
     }
 
-    // Constructor without courseTaught
+    
     public Professor(int professorID, String firstName, String lastName) {
         this.professorID = professorID;
         this.firstName = firstName;
@@ -20,7 +20,6 @@ class Professor {
         this.courseTaught = "";
     }
 
-    // Getters and setters
     public int getProfessorID() {
         return professorID;
     }
@@ -53,7 +52,7 @@ class Professor {
         this.courseTaught = courseTaught;
     }
 
-    // Method to assign a grade to a student
+   
     public void assignGrade(Student student, int grade) {
         if (grade >= 18) {
             student.getGrades().add(grade);
