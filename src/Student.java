@@ -1,90 +1,84 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class Student {
-
-    private String id;
-    private String name;
-    private String surName;
+class Student {
+    private int studentID;
+    private String firstName;
+    private String lastName;
     private String dateOfBirth;
-    private ArrayList<Integer> elencoVoti = new ArrayList<>();
+    private List<Integer> grades;
 
-    Student(String id, String name,String surName, String dateOfBirth) {
-        this.id = id;
-        this.name = name;
-        this.surName = surName;
+
+    public Student(int studentID, String firstName, String lastName, String dateOfBirth, List<Integer> grades) {
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.elencoVoti = new ArrayList<>();
-
+        this.grades = grades;
     }
 
-    Student(Integer elencoVoti) {
-        this.elencoVoti = new ArrayList<>();
+    
+    public Student(int studentID, String firstName, String lastName, String dateOfBirth) {
+        this.studentID = studentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.grades = new ArrayList<>();
     }
 
-     {
+    // Getter setters
+    public int getStudentID() {
+        return studentID;
+    }
 
+    public void setStudentID(int studentID) {
+        this.studentID = studentID;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurName() {
-        return surName;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurName(String surnName) {
-        this.surName = surnName;
-    }
-
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public ArrayList<Integer> getElencoVoti() {
-        return elencoVoti;
+    public List<Integer> getGrades() {
+        return grades;
     }
 
-    public void setElencoVoti(ArrayList<Integer> elencoVoti) {
-        this.elencoVoti = elencoVoti;
+    public void setGrades(List<Integer> grades) {
+        this.grades = grades;
     }
 
-    private double calcolaGradeAverage() {
-        if (elencoVoti.isEmpty()) {
+    public double calculateGradeAverage() {
+        if (grades.isEmpty()) {
             return 0.0;
         }
-        double sum = 0.0;
-        for (double grade : elencoVoti) {
+        int sum = 0;
+        for (int grade : grades) {
             sum += grade;
         }
-
-        return sum / elencoVoti.size();
-
+        return (double) sum / grades.size();
     }
-public double getCalcolaGradeAverange(){
-        return calcolaGradeAverage();
-}
-    public boolean isExellent() {
-        if (calcolaGradeAverage() >= 28) {
-            return true;
-        }
 
-        return false;
+    public boolean isExcellent() {
+        return calculateGradeAverage() >= 28;
     }
 }
