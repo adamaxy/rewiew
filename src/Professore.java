@@ -1,62 +1,64 @@
-public class Professore {
-    private String id;
-    private String name;
-    private String surName;
-    private String materia;
-    Student student;
-    Professore(String id, String name,String surName, String materia){
-        this.id=id;
-        this.name= name;
-        this.surName= surName;
-        this.materia= materia;
-    }
-    Professore(String id, String name,String surName){
-        this.id=id;
-        this.name= name;
-        this.surName= surName;
+class Professor {
+    private int professorID;
+    private String firstName;
+    private String lastName;
+    private String courseTaught;
 
-    }
-///////getter
-    public String getId() {
-        return id;
+    // Constructor with all attributes
+    public Professor(int professorID, String firstName, String lastName, String courseTaught) {
+        this.professorID = professorID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.courseTaught = courseTaught;
     }
 
-    public String getName() {
-        return name;
+    // Constructor without courseTaught
+    public Professor(int professorID, String firstName, String lastName) {
+        this.professorID = professorID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.courseTaught = "";
     }
 
-    public String getSurName() {
-        return surName;
+    // Getters and setters
+    public int getProfessorID() {
+        return professorID;
     }
 
-    public String getMateria() {
-        return materia;
-    }
-    ///////setter
-    public void setId(String id) {
-        this.id = id;
+    public void setProfessorID(int professorID) {
+        this.professorID = professorID;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setMateria(String materia) {
-        this.materia = materia;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void assignGrade(Student student, int grade){
-        if ( grade >= 18 ) student.getElencoVoti().add(grade);
-            else { System.out.println("HAI FALLITO! Ritenta sarai più fortunato");
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
+    public String getCourseTaught() {
+        return courseTaught;
+    }
 
+    public void setCourseTaught(String courseTaught) {
+        this.courseTaught = courseTaught;
+    }
 
-
-
+    // Method to assign a grade to a student
+    public void assignGrade(Student student, int grade) {
+        if (grade >= 18) {
+            student.getGrades().add(grade);
+        } else {
+            System.out.println("Student " + student.getFirstName() + " " + student.getLastName() + " has failed.");
         }
     }
 }
